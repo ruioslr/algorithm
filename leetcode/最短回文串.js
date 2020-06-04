@@ -17,30 +17,5 @@
 
 
 var shortestPalindrome = function(s) {
-    const length = s.length;
-    if(length <= 1){
-        return s;
-    }
-    let begin = 0;
-    let minLength = length;
-    const dp = [];
-    for(j=0; j < length; j ++){
-        if(!dp[j]) dp[j] = [];
-        for(i = 0; i < j; i++){
-            if(s[i] === s[j]){
-                if(j-i > 2) {
-                    dp[i][j] = dp[i+1][j-1]
-                }else {
-                    dp[i][j] = true;
-                }
-            }else {
-                dp[i][j] = false;
-            }
-            if(dp[i][j] && j-i < minLength){
-                begin = i;
-                minLength = j-i;
-            }
-        }
-    }
-    return s.substring(begin, begin + minLength + 1);
+    
 };
