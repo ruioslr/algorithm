@@ -38,3 +38,5 @@ var rob = function(nums) {
     }
     return dp[nums.length];
 };
+
+console.log(rob([1,2,3,1]));
