@@ -48,7 +48,7 @@ var intersect = function(nums1, nums2) {
 test(intersect);
 
 function test(func){
-    describe('两个数组的交集', () => {
+    describe('两个数组的交集' + func.name, () => {
         it("test1", () => {
             var nums1 = [1,2,2,1], nums2 = [2,2];
             expect(func(nums1, nums2)).toEqual([2,2]);
