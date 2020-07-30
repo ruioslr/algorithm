@@ -59,9 +59,11 @@ var longestCommonPrefix = function(strs) {
 };
 
 
+
 // test
 
 test(longestCommonPrefix);
+
 
 function test(func){
     describe(`最长公共前缀 ${func.name}`, () => {
