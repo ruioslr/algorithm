@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/ruioslr/algorithm.git",
   "author": "ruios <ruiosli@kreditme.id>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
 }
