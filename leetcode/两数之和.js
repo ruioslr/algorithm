@@ -32,10 +32,23 @@ var twoSum = function(nums, target) {
     }
 };
 
+var twoSum2 = function(nums, target) {
+    var pre = {};
+    for(var i = 0; i < nums.length; i ++){
+        var preIndex = pre[target - nums[i]];
+        if(preIndex !== undefined){
+            return [preIndex, i]
+        }
+        pre[nums[i]] = i;
+    }
+};
+
 //test
 
 
 test(twoSum);
+
+test(twoSum2)
 
 
 function test(func){
