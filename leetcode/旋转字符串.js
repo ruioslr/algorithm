@@ -30,16 +30,14 @@ var rotateString = function (A, B) {
   if (length === 0) {
     return true;
   }
-  for (var i = 0; i < length; i++) {
+  out: for (var i = 0; i < length; i++) {
     if (B[0] === A[i]) {
-      var k = i,
-        j = 0;
-      for (; j < length; j++, k++) {
+      for (var k = i, j = 0; j < length; j++, k++) {
         if (B[j] !== A[k % length]) {
-          break;
+          continue out;
         }
       }
-      if (j === length) return true;
+      return true;
     }
   }
   return false;
@@ -57,7 +55,7 @@ var rotateString2 = function (A, B) {
 
 // test
 
-// 普通遍历
+// 普通遍历(穷举法)
 test(rotateString);
 
 // 奇淫技巧：首尾相连包含
