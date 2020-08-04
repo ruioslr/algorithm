@@ -25,8 +25,65 @@
  * @return {boolean}
  */
 var rotateString = function (A, B) {
-  for (var i = 0; i < B.length; i++) {
-    if (B[i] === A[0]) {
+  if (A.length !== B.length) return false;
+  var length = A.length;
+  if (length === 0) {
+    return true;
+  }
+  for (var i = 0; i < length; i++) {
+    if (B[0] === A[i]) {
+      var k = i,
+        j = 0;
+      for (; j < length; j++, k++) {
+        if (B[j] !== A[k % length]) {
+          break;
+        }
+      }
+      if (j === length) return true;
     }
   }
+  return false;
 };
+
+/**
+ * @param {string} A
+ * @param {string} B
+ * @return {boolean}
+ */
+var rotateString2 = function (A, B) {
+  if(A.length !== B.length) return false;
+  return (B + B).indexOf(A) !== -1;
+};
+
+// test
+
+// 普通遍历
+test(rotateString);
+
+// 奇淫技巧：首尾相连包含
+test(rotateString2)
+
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = "abcde";
+      const input2 = "cdeab";
+      const output = true;
+      expect(func(input, input2)).toEqual(output);
+    });
+
+    it("test2", () => {
+      const input = "abcde";
+      const input2 = "abced";
+      const output = false;
+      expect(func(input, input2)).toEqual(output);
+    });
+
+    it("test3", () => {
+      const input = "aa";
+      const input2 = "a";
+      const output = false;
+      expect(func(input, input2)).toEqual(output);
+    });
+  });
+}
