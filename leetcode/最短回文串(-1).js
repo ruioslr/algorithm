@@ -9,13 +9,9 @@
 输入: "abcd"
 输出: "dcbabcd" */
 
-
 /**
  * @param {string} s
  * @return {string}
  */
 
-
-var shortestPalindrome = function(s) {
-    
-};
+var shortestPalindrome = function (s) {};

@@ -25,43 +25,42 @@
  * @param {character[]} s
  * @return {void} Do not return anything, modify s in-place instead.
  */
-var reverseString = function(s) {
-    var left = 0;
-    var right = s.length -1;
-    while(left < right){
-        // 传统 交换值
-        // var temp  = s[left];
-        // s[left] = s[right];
-        // s[right] = temp;
+var reverseString = function (s) {
+  var left = 0;
+  var right = s.length - 1;
+  while (left < right) {
+    // 传统 交换值
+    // var temp  = s[left];
+    // s[left] = s[right];
+    // s[right] = temp;
 
-        // 解构赋值
-        [s[left], s[right]] = [s[right], s[left]];
-        left ++;
-        right --;
-    }
+    // 解构赋值
+    [s[left], s[right]] = [s[right], s[left]];
+    left++;
+    right--;
+  }
 
-    return s;
+  return s;
 };
 
 // test
 
 test(reverseString);
 
-
 function test(func) {
+  describe(`${func.name}`, () => {
     describe(`${func.name}`, () => {
-        describe(`${func.name}`, () => {
-            it('test1', () => {
-                const input = ["h", "e", "l", "l", "o"];
-                const output = ["o", "l", "l", "e", "h"];
-                expect(func(input)).toEqual(output);
-            });
+      it("test1", () => {
+        const input = ["h", "e", "l", "l", "o"];
+        const output = ["o", "l", "l", "e", "h"];
+        expect(func(input)).toEqual(output);
+      });
 
-            it('test2', () => {
-                const input = ["H","a","n","n","a","h"];
-                const output = ["h","a","n","n","a","H"];
-                expect(func(input)).toEqual(output);
-            });
-        })
+      it("test2", () => {
+        const input = ["H", "a", "n", "n", "a", "h"];
+        const output = ["h", "a", "n", "n", "a", "H"];
+        expect(func(input)).toEqual(output);
+      });
     });
+  });
 }

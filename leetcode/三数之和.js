@@ -24,58 +24,57 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums) {
-    nums.sort((a, b) => a-b);
-    var left = 0;
-    var right = nums.length-1;
-    var res = [];
-    for(var i=0; i< nums.length;i++){
-        left = i+1;
-        right = nums.length-1;
-        var target = 0-nums[i];
-        if (i == 0 || nums[i] != nums[i - 1]) {
-        while(left < right){
-            if(nums[left] + nums[right] > target){
-                right--;
-                // while(nums[right] === nums[right+1]){
-                //     right --
-                // }
-            }else if(nums[left] + nums[right] < target){
-                left ++;
-                // while(nums[left] === nums[left-1]){
-                //     left ++;
-                // }
-            }else {
-                res.push([nums[i], nums[left], nums[right]]);
-                right --;
-                left ++;
-                while(nums[left] === nums[left-1]){
-                    left ++;
-                }
-                while(nums[right] === nums[right+1]){
-                    right --;
-                }
-            }
+var threeSum = function (nums) {
+  nums.sort((a, b) => a - b);
+  var left = 0;
+  var right = nums.length - 1;
+  var res = [];
+  for (var i = 0; i < nums.length; i++) {
+    left = i + 1;
+    right = nums.length - 1;
+    var target = 0 - nums[i];
+    if (i == 0 || nums[i] != nums[i - 1]) {
+      while (left < right) {
+        if (nums[left] + nums[right] > target) {
+          right--;
+          // while(nums[right] === nums[right+1]){
+          //     right --
+          // }
+        } else if (nums[left] + nums[right] < target) {
+          left++;
+          // while(nums[left] === nums[left-1]){
+          //     left ++;
+          // }
+        } else {
+          res.push([nums[i], nums[left], nums[right]]);
+          right--;
+          left++;
+          while (nums[left] === nums[left - 1]) {
+            left++;
+          }
+          while (nums[right] === nums[right + 1]) {
+            right--;
+          }
         }
-        }
+      }
     }
-    return res;
+  }
+  return res;
 };
 
 // test
 
 test(threeSum);
 
-
-function test(func){
-    describe(`${func.name}`, () => {
-        it('test1', () => {
-            const input = [-1,0,1,2,-1,-4];
-            const output = [
-                [-1, 0, 1],
-                [-1, -1, 2]
-            ];
-            expect(func(input)).toEqual(output);
-        });
-    })
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = [-1, 0, 1, 2, -1, -4];
+      const output = [
+        [-1, 0, 1],
+        [-1, -1, 2],
+      ];
+      expect(func(input)).toEqual(output);
+    });
+  });
 }

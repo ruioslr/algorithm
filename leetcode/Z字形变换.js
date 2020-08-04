@@ -38,6 +38,4 @@
  */
 
 // 完全看不懂题目是个啥意思
-var convert = function(s, numRows) {
-
-};
+var convert = function (s, numRows) {};

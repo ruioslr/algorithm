@@ -33,21 +33,19 @@
  */
 
 // 这个链表结构有毒
-var removeNthFromEnd = function(head, n) {
-    var list = [];
-    var next = head;
-    while(next !== null){
-        list.push(next);
-        next = next.next;
-    }
-    list.splice(list.length - n,1);
-    if(list.length <= 1 && n >= 1){
-        return null;
-    }
-    for(var i=0; i< list.length-1; i++){
-        list[i].next = list[i+1];
-    }
-    return list[0];
+var removeNthFromEnd = function (head, n) {
+  var list = [];
+  var next = head;
+  while (next !== null) {
+    list.push(next);
+    next = next.next;
+  }
+  list.splice(list.length - n, 1);
+  if (list.length <= 1 && n >= 1) {
+    return null;
+  }
+  for (var i = 0; i < list.length - 1; i++) {
+    list[i].next = list[i + 1];
+  }
+  return list[0];
 };
-
-

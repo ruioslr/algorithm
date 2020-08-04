@@ -41,41 +41,41 @@
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
-    if(!prices.length) return 0;
-    var currentMount = 0;
+var maxProfit = function (prices) {
+  if (!prices.length) return 0;
+  var currentMount = 0;
 
-    for(var i = 0; i < prices.length-1; i ++) {
-        var getMoney =  prices[i+1] - prices[i];
-        if(getMoney > 0){
-            currentMount += getMoney
-        }
+  for (var i = 0; i < prices.length - 1; i++) {
+    var getMoney = prices[i + 1] - prices[i];
+    if (getMoney > 0) {
+      currentMount += getMoney;
     }
-    return currentMount;
+  }
+  return currentMount;
 };
 
 // test
 
 test(maxProfit);
 
-function test(func){
-    describe(`最长公共前缀 ${func.name}`, () => {
-        it('test1', () => {
-            const input = [7,1,5,3,6,4];
-            const output = 7;
-            expect(func(input)).toBe(output)
-        });
+function test(func) {
+  describe(`最长公共前缀 ${func.name}`, () => {
+    it("test1", () => {
+      const input = [7, 1, 5, 3, 6, 4];
+      const output = 7;
+      expect(func(input)).toBe(output);
+    });
 
-        it('test2', () => {
-            const input = [1,2,3,4,5];
-            const output = 4;
-            expect(func(input)).toBe(output)
-        });
+    it("test2", () => {
+      const input = [1, 2, 3, 4, 5];
+      const output = 4;
+      expect(func(input)).toBe(output);
+    });
 
-        it('test3', () => {
-            const input = [7,6,4,3,1];
-            const output = 0;
-            expect(func(input)).toBe(output)
-        });
-    })
+    it("test3", () => {
+      const input = [7, 6, 4, 3, 1];
+      const output = 0;
+      expect(func(input)).toBe(output);
+    });
+  });
 }

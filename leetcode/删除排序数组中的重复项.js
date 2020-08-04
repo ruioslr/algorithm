@@ -44,37 +44,36 @@
 
 **/
 
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) {
-    for(var i=0; i< nums.length-1; i++){
-        if(nums[i] === nums[i+1]){
-            nums.splice(i+1, 1);
-            i--;
-        }
+var removeDuplicates = function (nums) {
+  for (var i = 0; i < nums.length - 1; i++) {
+    if (nums[i] === nums[i + 1]) {
+      nums.splice(i + 1, 1);
+      i--;
     }
-    return nums.length;
+  }
+  return nums.length;
 };
 
 // test
 
 test(removeDuplicates);
 
-function test(func){
-    describe(`${func.name}`, () => {
-        it('test1', () => {
-            const input = [1,1,2];
-            const output = 2;
-            expect(func(input)).toEqual(output);
-        });
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = [1, 1, 2];
+      const output = 2;
+      expect(func(input)).toEqual(output);
+    });
 
-        it('test2', () => {
-            const input = [0,0,1,1,1,2,2,3,3,4];
-            const output = 5;
-            expect(func(input)).toEqual(output);
-        });
-    })
+    it("test2", () => {
+      const input = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+      const output = 5;
+      expect(func(input)).toEqual(output);
+    });
+  });
 }

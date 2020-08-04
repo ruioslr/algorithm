@@ -36,21 +36,19 @@
  */
 
 // 无法改变原数组
-var removeElement = function(nums, val) {
-    return nums.join('').replace(new RegExp(val, 'g'), '').length;
+var removeElement = function (nums, val) {
+  return nums.join("").replace(new RegExp(val, "g"), "").length;
 };
 
-
-var removeElement2 = function(nums, val) {
-    for(var i = 0; i < nums.length ; i ++){
-        if(nums[i] === val) {
-            nums.splice(i,1)
-            i--;
-        }
+var removeElement2 = function (nums, val) {
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] === val) {
+      nums.splice(i, 1);
+      i--;
     }
-    return nums.length;
+  }
+  return nums.length;
 };
-
 
 //test
 
@@ -58,21 +56,20 @@ var removeElement2 = function(nums, val) {
 
 test(removeElement2);
 
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = [3, 2, 2, 3];
+      const input2 = 3;
+      const output = 2;
+      expect(func(input, input2)).toEqual(output);
+    });
 
-function test(func){
-    describe(`${func.name}`, () => {
-        it('test1', () => {
-            const input = [3,2,2,3];
-            const input2 = 3;
-            const output = 2;
-            expect(func(input, input2)).toEqual(output);
-        });
-
-        it('test2', () => {
-            const input = [0,1,2,2,3,0,4,2];
-            const input2 = 2;
-            const output = 5;
-            expect(func(input, input2)).toEqual(output)
-        });
-    })
+    it("test2", () => {
+      const input = [0, 1, 2, 2, 3, 0, 4, 2];
+      const input2 = 2;
+      const output = 5;
+      expect(func(input, input2)).toEqual(output);
+    });
+  });
 }

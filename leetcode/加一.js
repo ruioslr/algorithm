@@ -22,71 +22,69 @@
     著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-
 /**
  * @param {number[]} digits
  * @return {number[]}
  */
-var plusOne = function(digits) {
-    var isStep = 0;
-    if(digits[digits.length-1] + 1 >= 10) {
-        isStep = 1;
-        digits[digits.length-1] = digits[digits.length-1] + 1 - 10
-    }else {
-        digits[digits.length-1] = digits[digits.length-1] + 1
+var plusOne = function (digits) {
+  var isStep = 0;
+  if (digits[digits.length - 1] + 1 >= 10) {
+    isStep = 1;
+    digits[digits.length - 1] = digits[digits.length - 1] + 1 - 10;
+  } else {
+    digits[digits.length - 1] = digits[digits.length - 1] + 1;
+  }
+  for (var i = digits.length - 2; i >= 0; i--) {
+    if (digits[i] + isStep >= 10) {
+      digits[i] = digits[i] + isStep - 10;
+      isStep = 1;
+    } else {
+      digits[i] = digits[i] + isStep;
+      isStep = 0;
     }
-    for(var i=digits.length-2; i >=0; i--){
-        if(digits[i]  + isStep >= 10){
-            digits[i] = digits[i] + isStep - 10;
-            isStep = 1;
-        }else {
-            digits[i] = digits[i] + isStep
-            isStep = 0;
-        }
-    }
+  }
 
-    if(isStep){
-        digits.unshift(1)
-    }
+  if (isStep) {
+    digits.unshift(1);
+  }
 
-    return digits;
+  return digits;
 };
 
 // test;
 
 test(plusOne);
 
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = [1, 2, 3];
+      const output = [1, 2, 4];
+      expect(func(input)).toEqual(output);
+    });
 
-function test(func){
-    describe(`${func.name}`, () => {
-        it('test1', () => {
-            const input = [1,2,3];
-            const output = [1,2,4];
-            expect(func(input)).toEqual(output);
-        });
+    it("test2", () => {
+      const input = [4, 3, 2, 1];
+      const output = [4, 3, 2, 2];
+      expect(func(input)).toEqual(output);
+    });
 
-        it('test2', () => {
-            const input = [4,3,2,1];
-            const output = [4,3,2,2]
-            expect(func(input)).toEqual(output);
-        });
+    it("test3", () => {
+      const input = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3];
+      const output = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 4];
+      expect(func(input)).toEqual(output);
+    });
 
-        it('test3', () => {
-            const input = [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3];
-            const output = [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4];
-            expect(func(input)).toEqual(output);
-        });
+    it("test4", () => {
+      const input = [9];
+      const output = [1, 0];
+      expect(func(input)).toEqual(output);
+    });
 
-        it('test4', () => {
-            const input = [9];
-            const output = [1,0];
-            expect(func(input)).toEqual(output);
-        });
-
-        it('test5', () => {
-            const input = [8,9,9,9];
-            const output = [9,0,0,0];
-            expect(func(input)).toEqual(output);
-        });
-    })
+    it("test5", () => {
+      const input = [8, 9, 9, 9];
+      const output = [9, 0, 0, 0];
+      expect(func(input)).toEqual(output);
+    });
+  });
 }

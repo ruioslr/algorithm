@@ -21,28 +21,28 @@
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function(s) {
-    var r = s.toLowerCase().replace(/[^a-z0-9]/g, '');
-    var left = 0;
-    var right = r.length-1;
-    while(right > left){
-        if(r[left] === r[right]){
-            left ++;
-            right --;
-        }else {
-            return false
-        }
+var isPalindrome = function (s) {
+  var r = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  var left = 0;
+  var right = r.length - 1;
+  while (right > left) {
+    if (r[left] === r[right]) {
+      left++;
+      right--;
+    } else {
+      return false;
     }
-    return true;
+  }
+  return true;
 };
 
 /**
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome2 = function(s) {
-    var r = s.toLowerCase().replace(/[^a-z0-9]/g, '');
-    return  r === r.split('').reverse().join('');
+var isPalindrome2 = function (s) {
+  var r = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return r === r.split("").reverse().join("");
 };
 
 // test
@@ -53,19 +53,18 @@ test(isPalindrome);
 // 奇淫技巧： 回文串 翻转 相等
 test(isPalindrome2);
 
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = "A man, a plan, a canal: Panama";
+      const output = true;
+      expect(func(input)).toEqual(output);
+    });
 
-function test(func){
-    describe(`${func.name}`, () => {
-        it('test1', () => {
-            const input = "A man, a plan, a canal: Panama";
-            const output = true;
-            expect(func(input)).toEqual(output);
-        });
-
-        it('test2', () => {
-            const input = "race a car";
-            const output = false;
-            expect(func(input)).toEqual(output)
-        });
-    })
+    it("test2", () => {
+      const input = "race a car";
+      const output = false;
+      expect(func(input)).toEqual(output);
+    });
+  });
 }

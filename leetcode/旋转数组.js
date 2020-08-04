@@ -27,54 +27,53 @@
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var rotate = function(nums, k) {
-    if(!nums.length) return [];
-    k = k % nums.length;
-    var temp = [...nums];
-    for(var i=0; i<temp.length;i++){
-        if(i+k < nums.length){
-            nums[i+k] = temp[i];
-        }else {
-            nums[(i+k)-nums.length] = temp[i]
-        }
+var rotate = function (nums, k) {
+  if (!nums.length) return [];
+  k = k % nums.length;
+  var temp = [...nums];
+  for (var i = 0; i < temp.length; i++) {
+    if (i + k < nums.length) {
+      nums[i + k] = temp[i];
+    } else {
+      nums[i + k - nums.length] = temp[i];
     }
+  }
 
-    return nums;
+  return nums;
 };
 
 //test
 
 test(rotate);
 
-function test(func){
-    describe(`最长公共前缀 ${func.name}`, () => {
-        it('test1', () => {
-            const input = [1,2,3,4,5,6,7];
-            const input2 = 3;
-            const output = [5,6,7,1,2,3,4];
-            expect(func(input, input2)).toEqual(output)
-        });
+function test(func) {
+  describe(`最长公共前缀 ${func.name}`, () => {
+    it("test1", () => {
+      const input = [1, 2, 3, 4, 5, 6, 7];
+      const input2 = 3;
+      const output = [5, 6, 7, 1, 2, 3, 4];
+      expect(func(input, input2)).toEqual(output);
+    });
 
-        it('test2', () => {
-            const input = [-1,-100,3,99];
-            const input2 = 2;
-            const output = [3,99,-1,-100];
-            expect(func(input, input2)).toEqual(output)
-        });
+    it("test2", () => {
+      const input = [-1, -100, 3, 99];
+      const input2 = 2;
+      const output = [3, 99, -1, -100];
+      expect(func(input, input2)).toEqual(output);
+    });
 
-        it('test3', () => {
-            const input = [1,2,3,4,5,6,7];
-            const input2 = 3;
-            const output = [5,6,7,1,2,3,4];
-            expect(func(input, input2)).toEqual(output)
-        });
+    it("test3", () => {
+      const input = [1, 2, 3, 4, 5, 6, 7];
+      const input2 = 3;
+      const output = [5, 6, 7, 1, 2, 3, 4];
+      expect(func(input, input2)).toEqual(output);
+    });
 
-        it('test4', () => {
-            const input = [-1];
-            const input2 = 2;
-            const output = [-1];
-            expect(func(input, input2)).toEqual(output)
-        })
-    })
+    it("test4", () => {
+      const input = [-1];
+      const input2 = 2;
+      const output = [-1];
+      expect(func(input, input2)).toEqual(output);
+    });
+  });
 }
-
