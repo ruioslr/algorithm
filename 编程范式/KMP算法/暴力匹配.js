@@ -7,6 +7,8 @@
  * @param {string} p
  * @return {boolean}
  */
+
+// 事件复杂度 O(M*N)
 var search = function (s, p) {
   var i = 0,
     j = 0;
@@ -46,3 +48,4 @@ function test(func) {
     });
   });
 }
+

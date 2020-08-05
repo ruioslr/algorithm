@@ -7,6 +7,7 @@
  * @param {string} p
  * @return {boolean}
  */
+// 时间复杂度 O(M + N)
 var search = function (s, p) {
   var i = 0,
     j = -1;
