@@ -48,8 +48,34 @@ var rotateString = function (A, B) {
  * @param {string} B
  * @return {boolean}
  */
+var rotateString3 = function (A, B) {
+  if (A.length !== B.length) return false;
+  var i = 0,
+    j = 0;
+  while (i < A.length)  {
+    if (B[i] === A[j % A.length]) {
+      i++;
+      j++;
+    } else {
+      if(i>0){
+        i = 0;
+      }else{
+        i = 0;
+        j ++
+      }
+      if(j >= A.length) break;
+    }
+  }
+  return i === A.length;
+};
+
+/**
+ * @param {string} A
+ * @param {string} B
+ * @return {boolean}
+ */
 var rotateString2 = function (A, B) {
-  if(A.length !== B.length) return false;
+  if (A.length !== B.length) return false;
   return (B + B).indexOf(A) !== -1;
 };
 
@@ -58,8 +84,11 @@ var rotateString2 = function (A, B) {
 // 普通遍历(穷举法)
 test(rotateString);
 
+// 普通遍历(穷举法2)
+test(rotateString3);
+
 // 奇淫技巧：首尾相连包含
-test(rotateString2)
+test(rotateString2);
 
 function test(func) {
   describe(`${func.name}`, () => {
@@ -81,6 +110,19 @@ function test(func) {
       const input = "aa";
       const input2 = "a";
       const output = false;
+      expect(func(input, input2)).toEqual(output);
+    });
+
+    it("test4", () => {
+      const input = "bbbacddceeb";
+      const input2 = "ceebbbbacdd";
+      const output = true;
+      expect(func(input, input2)).toEqual(output);
+    });
+    it("test5", () => {
+      const input = "vcuszhlbtpmksjleuchmjffufrwpiddgyynfujnqblngzoogzg";
+      const input2 = "fufrwpiddgyynfujnqblngzoogzgvcuszhlbtpmksjleuchmjf";
+      const output = true;
       expect(func(input, input2)).toEqual(output);
     });
   });
