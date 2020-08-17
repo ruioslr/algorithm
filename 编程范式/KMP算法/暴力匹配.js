@@ -22,6 +22,7 @@ var search = function (s, p) {
       j = 0;
     }
   }
+
   if (j === p.length) {
     return i - j;
   } else {
