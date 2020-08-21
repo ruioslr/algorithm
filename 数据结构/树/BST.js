@@ -3,9 +3,7 @@ class BST {
     this.root = null;
   }
   // 插入
-  insert = (data) => {
-
-  }
+  insert = (data) => {}
   // 查找
   search = (data) => {}
   // 中序遍历
