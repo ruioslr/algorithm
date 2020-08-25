@@ -16,15 +16,20 @@
  * @return {number}
  */
 var maxSubArray = function (nums) {
-  let res = nums[0];
-  let sum = 0;
-  for (const num of nums) {
-    if (sum > 0) {
-      sum += num;
-    } else {
-      sum = num;
-    }
-    res = Math.max(res, sum);
-  }
-  return res;
+  var dp = [];
+
 };
+
+// test
+
+test(climbStairs);
+
+function test(func) {
+  describe(`${func.name}`, () => {
+    it("test1", () => {
+      const input = [-2,1,-3,4,-1,2,1,-5,4];
+      const output = 6;
+      expect(func(input)).toEqual(output);
+    });
+  });
+}
