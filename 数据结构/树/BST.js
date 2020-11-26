@@ -82,8 +82,35 @@ class BST {
 
   //删除
   remove = (data) => {
-
+  //  二叉树的删除有三种情况
+  //  1：删除的节点没有子节点
+  //  2：删除的节点有一个子节点
+  //  3：删除的节点有两个子节点
+  //  思想： 删除后，返回要删除的节点的子树
+    this.root = this.removeNode(this.root, data);
   }
+
+  // 删除某个树上的某个节点，并返回删除之后的树
+  removeNode = (node, data) => {
+    if(node === null){
+      return null
+    }
+
+    // 第一种情况
+    if(node.left === null && node.right === null){
+      return null;
+    }
+
+    // 第二种情况
+    if(node.left !== null){
+      return node.left;
+    }
+
+    if(node.right !== null){
+
+    }
+  }
+
 
 
   // min: 即为找到树的最左边的节点
