@@ -91,31 +91,51 @@ class BST {
   }
 
   // 删除某个树上的某个节点，并返回删除之后的树
-  removeNode = (node, data) => {
-    if(node === null){
+  removeNode = (root, data) => {
+    if(root === null){
       return null
     }
 
+    if(data > root.data){
+      root.right = this.removeNode(root.right, data);
+      return root;
+    }
+    if(data < root.data){
+      root.left = this.removeNode(root.left, data);
+      return root;
+    }
+
     // 第一种情况
-    if(node.left === null && node.right === null){
+    if(root.left === null && root.right === null){
       return null;
     }
 
     // 第二种情况
-    if(node.left !== null){
-      return node.left;
+    if(root.left === null){
+      return root.right;
     }
 
-    if(node.right !== null){
-
+    if(root.right === null){
+      return root.left;
     }
+
+    // 第三种情况
+    // 1，找到中序后继,
+    // 注意： 之所以给minNode传入node.right，是因为如果传node,则minNode方法返回的是以node为root的树的最小值，它是比node小的，并不是中序后继，
+    // 要找到比node大的且是最小的一个，应该从node.right子树中找
+    const next = this.minNode(root.right);
+    // 2, 将要删除的节点的值替换成中序后继的值
+    root.data = next.data;
+    // 3, 删掉中序后继
+    root.right = this.removeNode(root.right, next.data);
+    return root;
   }
 
 
 
   // min: 即为找到树的最左边的节点
   min = () => {
-    this.minNode(this.root);
+    return this.minNode(this.root);
   }
   // min的辅助方法
   minNode = (node) => {
