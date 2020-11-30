@@ -1,11 +1,16 @@
-class BST {
+/*
+* 二叉搜索树
+*/
+
+
+export class BST {
   constructor() {
     this.root = null;
   }
 
   // 插入
-  insert = (data) => {
-    const newNode = new Node(data);
+  insert = (key) => {
+    const newNode = new Node(key);
     if(this.root === null) {
       this.root = newNode
     }else{
@@ -14,7 +19,7 @@ class BST {
   };
   // 辅助查找
   insertNode = (node, newNode) => {
-    if(node.data >= newNode.data){
+    if(node.key >= newNode.key){
       if(node.right){
         this.insertNode(node.right, newNode)
       }else {
@@ -30,16 +35,16 @@ class BST {
   }
 
   // 查找，这里我是返回找到的node节点
-  search = (data) => {
-    this.searchNode(this.root, data)
+  search = (key) => {
+    this.searchNode(this.root, key)
   }
   // 查找的辅助方法
-  searchNode = (node, data) => {
+  searchNode = (node, key) => {
     if(node === null) return null;
-    if(data > node.data){
-      return this.searchNode(node.right, data)
-    }else if(data < node.data){
-      return this.searchNode(node.left, data)
+    if(key > node.key){
+      return this.searchNode(node.right, key)
+    }else if(key < node.key){
+      return this.searchNode(node.left, key)
     }else {
       return node;
     }
@@ -81,27 +86,27 @@ class BST {
   }
 
   //删除
-  remove = (data) => {
+  remove = (key) => {
   //  二叉树的删除有三种情况
   //  1：删除的节点没有子节点
   //  2：删除的节点有一个子节点
   //  3：删除的节点有两个子节点
   //  思想： 删除后，返回要删除的节点的子树
-    this.root = this.removeNode(this.root, data);
+    this.root = this.removeNode(this.root, key);
   }
 
   // 删除某个树上的某个节点，并返回删除之后的树
-  removeNode = (root, data) => {
+  removeNode = (root, key) => {
     if(root === null){
       return null
     }
 
-    if(data > root.data){
-      root.right = this.removeNode(root.right, data);
+    if(key > root.key){
+      root.right = this.removeNode(root.right, key);
       return root;
     }
-    if(data < root.data){
-      root.left = this.removeNode(root.left, data);
+    if(key < root.key){
+      root.left = this.removeNode(root.left, key);
       return root;
     }
 
@@ -125,9 +130,9 @@ class BST {
     // 要找到比node大的且是最小的一个，应该从node.right子树中找
     const next = this.minNode(root.right);
     // 2, 将要删除的节点的值替换成中序后继的值
-    root.data = next.data;
+    root.key = next.key;
     // 3, 删掉中序后继
-    root.right = this.removeNode(root.right, next.data);
+    root.right = this.removeNode(root.right, next.key);
     return root;
   }
 
@@ -161,9 +166,9 @@ class BST {
 }
 
 // 树中的节点
-class Node {
-  constructor(data) {
-    this.data = data;
+export class Node {
+  constructor(key) {
+    this.key = key;
     this.left = null;
     this.right = null;
   }
