@@ -8,7 +8,7 @@ export class BST {
     this.root = null;
   }
 
-  // 插入
+  // 插入： 当向树中插入一个新的节点时，该节点将总是作为叶子节点
   insert = (key) => {
     const newNode = new Node(key);
     if(this.root === null) {
