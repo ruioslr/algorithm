@@ -36,6 +36,8 @@ var permute = function(nums) {
       res.push([...temp]);
       return;
     }
+
+    // for 循环是 dfs树的每层， 而backtracking 指的是每个节点
     for(let i = 0; i < nums.length; i++){
       if(temp.indexOf(nums[i]) === -1){
         temp.push(nums[i]);
