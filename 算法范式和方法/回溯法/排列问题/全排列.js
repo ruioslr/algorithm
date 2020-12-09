@@ -29,7 +29,7 @@ var permute = function(nums) {
   const res = [];
   const temp  = [];
   // k是找到结果的第k个数字（k 层）
-  function backTrace (k) {
+  function backtracking (k) {
     if(k === nums.length) {
       res.push([...temp]);
       return;
@@ -37,12 +37,12 @@ var permute = function(nums) {
     for(let i = 0; i < nums.length; i++){
       if(temp.indexOf(nums[i]) === -1){
         temp.push(nums[i]);
-        backTrace(k+1);
+        backtracking(k+1);
         temp.pop();
       }
     }
   }
-  backTrace(0);
+  backtracking(0);
   return res;
 };
 
