@@ -29,22 +29,33 @@
 var permuteUnique = function(nums) {
   const res = [];
   const temp = [];
-  nums.sort((a, b) => b - a);
+  const used = [];
+  nums.sort((a, b) => a - b);
 
-  function backTrace(k){
+  function backtracking(k){
     if(k === nums.length){
       res.push([...temp]);
       return;
     }
 
     for (let i = 0; i < nums.length; i++){
-      temp.push(nums[i]);
-      backTrace(k+1);
-      temp.pop();
+      // 对于同一层，如果两次拿出的数是一样的，
+      // 而之前那个数还没用，说明在上一次for循环产生结果与这次会一模一样，所以把这次剪枝
+      if(nums[i] === nums[i-1] && !used[i-1]){
+        continue;
+      }
+
+      if(!used[i]){
+        used[i] = true;
+        temp.push(nums[i]);
+        backtracking(k+1);
+        used[i] = false;
+        temp.pop();
+      }
     }
   }
 
-  backTrace(0);
+  backtracking(0);
   return res;
 };
 
