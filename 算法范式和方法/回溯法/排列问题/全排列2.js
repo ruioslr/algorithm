@@ -29,6 +29,7 @@
 var permuteUnique = function(nums) {
   const res = [];
   const temp = [];
+  nums.sort((a, b) => b - a);
 
   function backTrace(k){
     if(k === nums.length){
@@ -56,6 +57,11 @@ function test(func) {
     it("test1", () => {
       const input = [1,2,3];
       const output = [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]];
+      expect(func(input)).toEqual(output);
+    });
+    it("test2", () => {
+      const input = [1,1,2];
+      const output = [[1,1,2], [1,2,1], [2,1,1]];
       expect(func(input)).toEqual(output);
     });
   });
