@@ -31,7 +31,7 @@ var permute = function(nums) {
   // k是找到结果的第k个数字（k 层）
   function backtracking (k) {
 
-    // 当 k === nums.length时， 此时temp 是叶子节点
+    // 当 k === nums.length时， 此时temp 是叶子节点, 判断条件其实就是叶子节点的产生条件
     if(k === nums.length) {
       res.push([...temp]);
       return;
